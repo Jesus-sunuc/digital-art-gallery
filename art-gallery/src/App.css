@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'IndieFlowers';
+  src: url('./assets/fonts/IndieFlower-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'OpenSansLight';
+  src: url('./assets/fonts/OpenSans-Light.ttf');
+}
+
+@font-face {
+  font-family: 'RalewayLight';
+  src: url('./assets/fonts/Raleway-Light.ttf');
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #6f2bf8f2;
+}
+
+.bg-body-tertiary{
+  background-color: #6f2bf8f2;
+}
+
+.navbar a {
+  color: #fff;
+  font-family: 'IndieFlowers';
+  font-size: 50px;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+}
+
+.navbar a:hover {
+  color: #fff;
+}
