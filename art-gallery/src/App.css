@@ -19,6 +19,10 @@
   box-sizing: border-box;
 }
 
+header {
+  margin-bottom: 40px;
+}
+
 .header-container {
   padding: 1rem;
 }
@@ -57,6 +61,10 @@
 .navigation a {
   color: #000;
   text-decoration: none;
+}
+
+footer {
+  margin-top: 400px;
 }
 
 @media only screen and (max-width: 768px) {
