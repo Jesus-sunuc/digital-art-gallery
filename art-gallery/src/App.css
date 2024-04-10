@@ -19,27 +19,48 @@
   box-sizing: border-box;
 }
 
-header {
-  background-color: #6f2bf8f2;
+.header-container {
+  padding: 1rem;
 }
 
-.bg-body-tertiary{
-  background-color: #6f2bf8f2;
+.header-container input {
+  margin-left: 40px;
 }
 
-.navbar a {
-  color: #fff;
-  font-family: 'IndieFlowers';
-  font-size: 50px;
-  margin: 0px;
-  padding: 0px;
+.search-upload {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.navigation {
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.navigation li {
+  padding: 0.5rem;
   cursor: pointer;
 }
 
-.navbar a:hover {
-  color: #fff;
+.navigation li:hover {
+  background-color: #f2f2f2;
+  border-radius: 5px;
 }
 
-.navbar input {
-  width: 500px;
+.logo {
+  font-family: 'IndieFlowers';
+  font-size: 70px;
+}
+
+.navigation a {
+  color: #000;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+  #space {
+    margin-bottom: 20px;
+  }
 }
