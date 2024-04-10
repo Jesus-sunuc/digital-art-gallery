@@ -39,3 +39,7 @@ header {
 .navbar a:hover {
   color: #fff;
 }
+
+.navbar input {
+  width: 500px;
+}

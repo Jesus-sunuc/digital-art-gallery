@@ -10,7 +10,7 @@ function App() {
         <header>
           <div className="container">
             <nav class="navbar">
-              <div class="container-fluid">
+            <div class="container-fluid">
                 <a class="navbar-brand">DA</a>
                 <form class="d-flex" role="search">
                   <input
@@ -20,7 +20,21 @@ function App() {
                     aria-label="Search"
                   />
                 </form>
+                <button type="button" class="btn btn-success">Success</button>
               </div>
+              <li>
+                <a href="">hoa</a>
+              </li>
+              <li>
+                <a href="">hoa</a>
+              </li>
+              <li>
+                <a href="">hoa</a>
+              </li>
+              <li>
+                <a href="">hoa</a>
+              </li>
+
             </nav>
           </div>
         </header>
