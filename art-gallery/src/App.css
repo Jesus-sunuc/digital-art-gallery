@@ -46,11 +46,11 @@ header {
 .navigation li {
   padding: 0.5rem;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .navigation li:hover {
   background-color: #f2f2f2;
-  border-radius: 5px;
 }
 
 .logo {
@@ -63,8 +63,31 @@ header {
   text-decoration: none;
 }
 
-footer {
-  margin-top: 400px;
+.btn_space {
+  margin-right: 20px;
+}
+
+.footer-text-color {
+  color: #000; 
+  font-size: 25px;
+  background-color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+
+.padding-vertical-medium {
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+
+.margin-end-small {
+  margin-right: 8px;
+}
+
+.margin-vertical-small {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 @media only screen and (max-width: 768px) {
