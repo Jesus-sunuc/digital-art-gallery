@@ -4,13 +4,13 @@ const UNSPLASH_ACCESS_KEY = 'HEtY5s-u0VohbhWNXZ5qHAZEqaTdbPWSgF8sRM7lWXg';
 const baseUrl = 'https://api.unsplash.com';
 
 const unsplashService = {
-  searchPhotos: async (query, page = 2) => {
+  searchPhotos: async (query, page = 1) => {
     try {
       const response = await axios.get(`${baseUrl}/search/photos`, {
         params: {
           query: query,
           page: page,
-          per_page: 20,  // Number of items per page
+          per_page: 10,  // Number of items per page
           client_id: UNSPLASH_ACCESS_KEY,
         },
       });

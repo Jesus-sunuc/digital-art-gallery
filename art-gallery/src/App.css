@@ -75,7 +75,6 @@ header {
   border-radius: 5px;
 }
 
-
 .padding-vertical-medium {
   padding-top: 26px;
   padding-bottom: 26px;
@@ -90,8 +89,7 @@ header {
   margin-bottom: 8px;
 }
 
-
-/* #images {
+#images {
   padding: 10px;
   box-sizing: border-box;
 }
@@ -115,9 +113,15 @@ header {
 .photos-fit img:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-} */
+}
 
+.iconsSize {
+  font-size: 30px;
+}
 
+button {
+  border: none;
+}
 @media only screen and (max-width: 768px) {
   #space {
     margin-bottom: 20px;
