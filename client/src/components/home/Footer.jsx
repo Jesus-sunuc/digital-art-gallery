@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <footer>
-      <div className="container text-align-center padding-vertical-medium">
+      <div className="container padding-vertical-medium">
         <div className="row">
           <div className="col-12 col-md-4">
             <h5>About Us</h5>

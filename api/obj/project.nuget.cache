@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "wVpF6xRKehV6MJdkw6dMpuyIhCbKyPky6Ab5VNahWjF0FCNsm6hdmGFDXJC50c8WulSCX9Yuw1TbOpziwcFtng==",
+  "success": true,
+  "projectFilePath": "/home/jesus-tuyuc/projects/digital-art-gallery/api/api.csproj",
+  "expectedPackageFiles": [
+    "/home/jesus-tuyuc/.nuget/packages/microsoft.aspnetcore.openapi/8.0.4/microsoft.aspnetcore.openapi.8.0.4.nupkg.sha512",
+    "/home/jesus-tuyuc/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/home/jesus-tuyuc/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/home/jesus-tuyuc/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "/home/jesus-tuyuc/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "/home/jesus-tuyuc/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "/home/jesus-tuyuc/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import unsplashService from "./service/service.jsx";
-import Header from "./appComp/Header.jsx";
-import MainContent from "./appComp/MainContent.jsx";
-import Favorites from "./assets/pages/Favorites";
-import Footer from "./appComp/Footer.jsx";
-import LoadingSpinner from "./appComp/LoadingSpinner.jsx";
+import Header from "./components/home/Header.jsx";
+import MainContent from "./components/home/MainContent.jsx";
+import Footer from "./components/home/Footer.jsx";
+import Favorites from "./pages/Favorites.jsx";
+import LoadingSpinner from "./components/spinner/LoadingSpinner.jsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
 
@@ -41,7 +41,6 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        { isLoading && <LoadingSpinner />}
         <div className={`text-center ${darkMode ? "bg-dark text-white" : "bg-light text-dark"}`}>
           <Header
             darkMode={darkMode}
@@ -49,7 +48,8 @@ function App() {
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
             handleSearch={handleSearch}
-          />
+            />
+            { isLoading && <LoadingSpinner />}
           <Routes>
             <Route path="/" element={<MainContent photos={photos} favorites={favorites} handleToggleFavorite={handleToggleFavorite} />} />
             <Route path="/Favorites" element={<Favorites photos={favorites} />} />

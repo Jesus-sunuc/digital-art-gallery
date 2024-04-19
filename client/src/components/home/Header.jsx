@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FileUploadForm from './FileUploadForm';
 
 function Header({ darkMode, toggleTheme, searchQuery, setSearchQuery, handleSearch }) {
   return (
@@ -21,17 +22,17 @@ function Header({ darkMode, toggleTheme, searchQuery, setSearchQuery, handleSear
             />
           </div>
           <div className="col-12 col-md-3 text-md-end">
-            <button className="btn btn-success btn_space" type="button">Upload</button>
-            <i className={`bi ${darkMode ? "bi-toggle-on" : "bi-toggle-off"}`}
-              onClick={toggleTheme}
-              style={{ cursor: "pointer", fontSize: "24px", color: darkMode ? "#fff" : "#000" }}></i>
+            <FileUploadForm uploadUrl="http://localhost:5078/imageUpload" />
+            <i className={`iconsSize bi ${darkMode ? "bi-toggle-on" : "bi-toggle-off"}`}
+               onClick={toggleTheme}>
+            </i>
           </div>
         </div>
         <div className="row">
           <div className="col-12">
             <nav className="navigation flex-wrap justify-content-around">
-              <Link to="/" className="btn btn-info">Home</Link>
-              <Link to="/Favorites" className="btn btn-info">Favorites</Link>
+              <Link to="/" className="btn btn-light">Home</Link>
+              <Link to="/Favorites" className="btn btn-light">Favorites</Link>
             </nav>
           </div>
         </div>

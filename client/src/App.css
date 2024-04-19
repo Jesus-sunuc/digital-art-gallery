@@ -19,22 +19,23 @@
   box-sizing: border-box;
 }
 
+/* ===================== GENERAL ===================== */
+.icon-space {
+  margin-right: 5px;
+}
+
+
+/* ===================== Favorites ===================== */
+.favoriteh2 {
+  margin: 20px 0px;
+}
+
+
+
+/* ===================== HEADER ===================== */
 header {
-  margin-bottom: 40px;
-}
-
-.header-container {
-  padding: 1rem;
-}
-
-.header-container input {
-  margin-left: 40px;
-}
-
-.search-upload {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+  padding: 30px 0px;
+  background-color: #205375;
 }
 
 .navigation {
@@ -49,13 +50,10 @@ header {
   border-radius: 5px;
 }
 
-.navigation li:hover {
-  background-color: #f2f2f2;
-}
-
 .logo {
   font-family: 'IndieFlowers';
   font-size: 70px;
+  color: #fff;
 }
 
 .navigation a {
@@ -67,12 +65,82 @@ header {
   margin-right: 20px;
 }
 
+.iconsSize {
+  font-size: 22px;
+  cursor: pointer;
+  color: #fff;
+}
+
+#fileUpload {
+  display: none;
+}
+
+
+/* ==================== MAIN CONTENT ====================== */
+#images {
+  margin: 40px 0px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.photos-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  justify-content: center;
+}
+
+.photos-fit-icon {
+  position: relative;
+}
+
+.button-fit {
+  position: absolute;
+  top: 5px;
+  right: 10px;  
+}
+
+.photos-fit img {
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.photos-fit img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  filter: brightness(70%);
+}
+
+.button-fit {
+  background-color: transparent;
+  color: #fff;
+}
+
+.icons-fit {
+  font-size: 28px;
+}
+
+button {
+  border: none;
+}
+
+/* ======================= FOOTER ========================== */
+footer {
+  margin-top: 40px;
+  background-color: #205375;
+  color: #fff;
+}
+
 .footer-text-color {
-  color: #000; 
   font-size: 25px;
-  background-color: #fff;
   padding: 2px;
   border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
 }
 
 .padding-vertical-medium {
@@ -89,39 +157,6 @@ header {
   margin-bottom: 8px;
 }
 
-#images {
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.photos-fit {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 15px;
-  justify-content: center;
-}
-
-.photos-fit img {
-  width: 100%; 
-  height: 200px; 
-  object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.photos-fit img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.iconsSize {
-  font-size: 30px;
-}
-
-button {
-  border: none;
-}
 @media only screen and (max-width: 768px) {
   #space {
     margin-bottom: 20px;
