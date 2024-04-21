@@ -1,15 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 function FileUploadForm({ uploadUrl }) {
+  const [message, setMessage] = useState('');
   const fileInputRef = useRef(null);
-
-  // Function to trigger the hidden file input when the button is clicked
-  const handleButtonClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ''; // Reset the file input before opening the dialog
-      fileInputRef.current.click();
-    }
-  };
 
   // Function to handle the file upload immediately upon file selection
   const handleFileChange = async (event) => {
@@ -25,38 +18,44 @@ function FileUploadForm({ uploadUrl }) {
         });
 
         if (response.ok) {
-          console.log("File uploaded successfully.");
+          displayMessage("File uploaded successfully.");
         } else {
-          console.error("File upload failed:", response.status);
+          displayMessage(`File upload failed: ${response.status}`);
         }
       } catch (error) {
-        console.error("Error uploading file:", error);
+        displayMessage(`Error uploading file: ${error.message}`);
       }
     } else {
-      console.error("No file selected for upload.");
+      displayMessage("No file selected for upload.");
     }
-    // Reset the file input after processing to allow for new file selections
-    event.target.value = '';
+    event.target.value = ''; // Reset the file input
+  };
+
+  // Function to display a message for 3 seconds
+  const displayMessage = (msg) => {
+    setMessage(msg);
+    setTimeout(() => {
+      setMessage('');
+    }, 3000); // Remove the message after 3 seconds
   };
 
   return (
-    <>
+    <div>
       <input
         type="file"
-        id="fileUpload"
-        name="fileUpload"
         ref={fileInputRef}
         onChange={handleFileChange}
-        multiple
+        style={{ display: 'none' }} // Hide the file input
       />
       <button
         type="button"
-        className="btn btn-success btn_space"
-        onClick={handleButtonClick}
-      ><i class="bi bi-cloud-arrow-up-fill iconsSize icon-space "></i>
+        className="btn btn-success"
+        onClick={() => fileInputRef.current.click()}
+      >
         Upload File
       </button>
-    </>
+      {message && <div style={{ color: 'green', marginTop: '10px' }}>{message}</div>}
+    </div>
   );
 }
 
