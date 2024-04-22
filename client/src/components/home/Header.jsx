@@ -34,6 +34,7 @@ function Header({ darkMode, toggleTheme, searchQuery, setSearchQuery, handleSear
               <Link to="/" className="btn btn-light">Home</Link>
               <Link to="/Favorites" className="btn btn-light">Favorites</Link>
               <Link to="/MyPics" className="btn btn-light">My Pics</Link>
+              <Link to="/Collections" className="btn btn-light">Collections</Link>
             </nav>
           </div>
         </div>

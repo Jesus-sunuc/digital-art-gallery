@@ -20,9 +20,15 @@ function MainContent({ photos, favorites, handleToggleFavorite }) {
                   draggable="true"
                   onDragStart={(e) => handleDragStart(e, photo)}
                 />
-                <button className="button-fit"
-                  onClick={() => handleToggleFavorite(photo)}
-                >
+                <button className="button-fit-icon-fav" onClick={() => handleToggleFavorite(photo)}>
+                  {favorites.find((f) => f.id === photo.id) ? (
+                    <i class="icons-fit bi bi-heart-fill"></i>
+                  ) : (
+                    <i class="icons-fit bi bi-heart"></i>
+                  )}
+                </button>
+
+                <button className="photos-fit-icon-add" onClick={() => handleToggleFavorite(photo)}>
                   {favorites.find((f) => f.id === photo.id) ? (
                     <i class="icons-fit bi bi-plus-circle-fill"></i>
                   ) : (

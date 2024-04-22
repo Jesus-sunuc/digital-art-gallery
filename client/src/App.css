@@ -93,10 +93,20 @@ header {
   position: relative;
 }
 
-.button-fit {
+.button-fit-icon-fav{
   position: absolute;
   top: 5px;
-  right: 10px;  
+  right: 10px;
+  background-color: transparent;
+  color: #fff;  
+}
+
+.photos-fit-icon-add {
+  position: absolute;
+  top: 5px;
+  right: 50px;
+  background-color: transparent;
+  color: #fff;
 }
 
 .photos-fit img {
@@ -112,11 +122,6 @@ header {
   transform: scale(1.05);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   filter: brightness(70%);
-}
-
-.button-fit {
-  background-color: transparent;
-  color: #fff;
 }
 
 .icons-fit {
