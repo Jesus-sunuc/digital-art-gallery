@@ -6,6 +6,7 @@ import Header from "./components/home/Header.jsx";
 import MainContent from "./components/home/MainContent.jsx";
 import Footer from "./components/home/Footer.jsx";
 import Favorites from "./pages/Favorites.jsx";
+import MyPics from "./pages/MyPics.jsx";
 import LoadingSpinner from "./components/spinner/LoadingSpinner.jsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
@@ -53,6 +54,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainContent photos={photos} favorites={favorites} handleToggleFavorite={handleToggleFavorite} />} />
             <Route path="/Favorites" element={<Favorites photos={favorites} />} />
+            <Route path="/MyPics" element={<MyPics />} />
           </Routes>
           <Footer />
         </div>

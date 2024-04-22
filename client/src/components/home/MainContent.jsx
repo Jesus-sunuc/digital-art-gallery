@@ -10,6 +10,7 @@ function MainContent({ photos, favorites, handleToggleFavorite }) {
     <main>
       <div className="container">
         <section id="images">
+        <h2 className='favoriteh2'>Home</h2>
           <div className="photos-fit">
             {photos.map((photo) => (
               <div className="photos-fit-icon" key={photo.id}>

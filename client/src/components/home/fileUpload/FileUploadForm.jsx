@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
+import './FileUploadForm.css'; 
 
 function FileUploadForm({ uploadUrl }) {
   const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState(''); 
   const fileInputRef = useRef(null);
 
-  // Function to handle the file upload immediately upon file selection
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -12,40 +13,41 @@ function FileUploadForm({ uploadUrl }) {
       formData.append("uploadedImage", file);
 
       try {
-        const response = await fetch(uploadUrl, {
+        const response = await fetch(uploadUrl, { 
           method: "POST",
           body: formData
         });
 
         if (response.ok) {
-          displayMessage("File uploaded successfully.");
+          displayMessage("File uploaded successfully.", "success");
         } else {
-          displayMessage(`File upload failed: ${response.status}`);
+          displayMessage(`File upload failed: ${response.status}`, "error");
         }
       } catch (error) {
-        displayMessage(`Error uploading file: ${error.message}`);
+        displayMessage(`Error uploading file: ${error.message}`, "error");
       }
     } else {
-      displayMessage("No file selected for upload.");
+      displayMessage("No file selected for upload.", "warning");
     }
     event.target.value = ''; // Reset the file input
   };
 
-  // Function to display a message for 3 seconds
-  const displayMessage = (msg) => {
+  const displayMessage = (msg, type) => {
     setMessage(msg);
+    setMessageType(type);
     setTimeout(() => {
       setMessage('');
+      setMessageType('');
     }, 3000); // Remove the message after 3 seconds
   };
 
   return (
-    <div>
+    <>
       <input
+        id='fileUpload'
         type="file"
         ref={fileInputRef}
         onChange={handleFileChange}
-        style={{ display: 'none' }} // Hide the file input
       />
       <button
         type="button"
@@ -54,8 +56,12 @@ function FileUploadForm({ uploadUrl }) {
       >
         Upload File
       </button>
-      {message && <div style={{ color: 'green', marginTop: '10px' }}>{message}</div>}
-    </div>
+      {message && (
+        <div className={`alert ${messageType}`}>
+          {message}
+        </div>
+      )}
+    </>
   );
 }
 

@@ -21,7 +21,7 @@
 
 /* ===================== GENERAL ===================== */
 .icon-space {
-  margin-right: 5px;
+  margin-left: 40px;
 }
 
 
@@ -78,8 +78,7 @@ header {
 
 /* ==================== MAIN CONTENT ====================== */
 #images {
-  margin: 40px 0px;
-  padding: 10px;
+  margin-bottom: 40px;
   box-sizing: border-box;
 }
 
