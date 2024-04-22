@@ -1,29 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import fetchImages from "../service/imageService.jsx"
 
 function MyPics() {
-    const [images, setImages] = useState([]);
+  const [images, setImages] = useState([]);
+  const [error, setError] = useState(null);
 
-    const handleFetchImages = async () => {
-        try {
-            const response = await fetch('http://localhost:5078/listImages'); // Adjust the URL/port as needed
-            const imageList = await response.json();
-            setImages(imageList.map(image => `http://localhost:5078/uploads/${image}`));
-        } catch (error) {
-            console.error('Failed to fetch images:', error);
-        }
-    };
+  const handleFetchImages = async () => {
+    try {
+      const images = await fetchImages();
+      setImages(images);
+    } catch (error) {
+      setError("Failed to load images.");
+    }
+  };
 
-    return (
-        <div>
-            <h1>My Pictures</h1>
-            <button onClick={handleFetchImages}>Load Images</button>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-                {images.map((img, index) => (
-                    <img key={index} src={img} alt="Uploaded content" style={{ width: '150px', height: '150px', margin: '10px' }} />
-                ))}
-            </div>
-        </div>
-    );
+  // UseEffect to call handleFetchImages when the component mounts
+  useEffect(() => {
+    handleFetchImages();
+  }, []);
+
+  return (
+    <div className="container">
+      <h2 className="favoriteh2">My Pictures</h2>
+      <div className="photos-fit">
+          {images.map((img, index) => (
+          <div key={index}>
+            <img src={img} alt="Uploaded content" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default MyPics;

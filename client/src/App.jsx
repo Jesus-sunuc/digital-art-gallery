@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import unsplashService from "./service/service.jsx";
+import unsplashService from "./service/externalAPIService.jsx";
 import Header from "./components/home/Header.jsx";
 import MainContent from "./components/home/MainContent.jsx";
 import Footer from "./components/home/Footer.jsx";
