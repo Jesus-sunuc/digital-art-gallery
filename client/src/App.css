@@ -95,7 +95,7 @@ header {
 
 .button-fit-icon-fav{
   position: absolute;
-  top: 5px;
+  top: 15px;
   right: 10px;
   background-color: transparent;
   color: #fff;  
@@ -103,8 +103,8 @@ header {
 
 .photos-fit-icon-add {
   position: absolute;
-  top: 5px;
-  right: 50px;
+  top: 15px;
+  right: 55px;
   background-color: transparent;
   color: #fff;
 }
@@ -125,12 +125,35 @@ header {
 }
 
 .icons-fit {
-  font-size: 28px;
+  font-size: 18px;
+  color: white;
+  background-color: rgb(163, 162, 162);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.icons-fit-active {
+  background-color: #e8ebd9;
+  color: #20af6c;
 }
 
 button {
   border: none;
 }
+
+/* ======================= COLLECTION ========================== */
+.collection-options {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
 
 /* ======================= FOOTER ========================== */
 footer {
@@ -166,3 +189,4 @@ footer {
     margin-bottom: 20px;
   }
 }
+

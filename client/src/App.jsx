@@ -7,8 +7,9 @@ import MainContent from "./components/home/MainContent.jsx";
 import Footer from "./components/home/Footer.jsx";
 import Favorites from "./pages/Favorites.jsx";
 import MyPics from "./pages/MyPics.jsx";
-import Collections from "./pages/Collections.jsx"
+import Collections from "./pages/Collections.jsx";
 import LoadingSpinner from "./components/spinner/LoadingSpinner.jsx";
+import CollectionFormModal from "./components/collections/FormModal.jsx"; // New component for the form
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
 
@@ -20,6 +21,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [collections, setCollections] = useState([]);
+  const [showCollectionModal, setShowCollectionModal] = useState(false);
+  const [selectedPhotoForCollection, setSelectedPhotoForCollection] = useState(null);
 
   function toggleTheme() {
     setDarkMode(!darkMode);
@@ -27,17 +31,35 @@ function App() {
 
   const handleSearch = async () => {
     setIsLoading(true);
-    const results = await unsplashService.searchPhotos(searchQuery);
-    setPhotos(results);
+    try {
+      const results = await unsplashService.searchPhotos(searchQuery);
+      setPhotos(results);
+    } catch (error) {
+      console.error("Search error:", error);
+    }
     setIsLoading(false);
   };
 
   const handleToggleFavorite = (photo) => {
-    if (favorites.find((f) => f.id === photo.id)) {
-      setFavorites(favorites.filter((f) => f.id !== photo.id));
-    } else {
-      setFavorites([...favorites, photo]);
-    }
+    const exists = favorites.some(f => f.id === photo.id);
+    setFavorites(exists ? favorites.filter(f => f.id !== photo.id) : [...favorites, photo]);
+  };
+
+  const openCollectionModal = (photo) => {
+    setSelectedPhotoForCollection(photo);
+    setShowCollectionModal(true);
+  };
+
+  const handleAddToCollection = (name, description) => {
+    if (!name) return;
+    const newCollection = {
+      id: Date.now(),
+      name: name,
+      description: description,
+      photos: [selectedPhotoForCollection]
+    };
+    setCollections([...collections, newCollection]);
+    setShowCollectionModal(false);
   };
 
   return (
@@ -50,14 +72,17 @@ function App() {
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
             handleSearch={handleSearch}
-            />
-            { isLoading && <LoadingSpinner />}
+          />
+          {isLoading && <LoadingSpinner />}
           <Routes>
-            <Route path="/" element={<MainContent photos={photos} favorites={favorites} handleToggleFavorite={handleToggleFavorite} />} />
+            <Route path="/" element={<MainContent photos={photos} favorites={favorites} collections={collections} handleToggleFavorite={handleToggleFavorite} openCollectionModal={openCollectionModal} />} />
             <Route path="/Favorites" element={<Favorites photos={favorites} />} />
             <Route path="/MyPics" element={<MyPics />} />
-            <Route path="/Collections" element= {< Collections/>} />
+            <Route path="/Collections" element={<Collections collections={collections} />} />
           </Routes>
+          {showCollectionModal && (
+            <CollectionFormModal addCollection={handleAddToCollection} closeModal={() => setShowCollectionModal(false)} />
+          )}
           <Footer />
         </div>
       </BrowserRouter>
