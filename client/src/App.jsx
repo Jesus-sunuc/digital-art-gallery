@@ -45,11 +45,6 @@ function App() {
     setFavorites(exists ? favorites.filter(f => f.id !== photo.id) : [...favorites, photo]);
   };
 
-  const openCollectionModal = (photo) => {
-    setSelectedPhotoForCollection(photo);
-    setShowCollectionModal(true);
-  };
-
   const handleAddToCollection = (name, description) => {
     if (!name) return;
     const newCollection = {
@@ -58,7 +53,7 @@ function App() {
       description,
       photos: [selectedPhotoForCollection]
     };
-    setCollections(colls => [...colls, newCollection]); // Using functional update
+    setCollections(colls => [...colls, newCollection]);
     setShowCollectionModal(false);
   };
   
@@ -76,7 +71,7 @@ function App() {
           />
           {isLoading && <LoadingSpinner />}
           <Routes>
-            <Route path="/" element={<MainContent photos={photos} favorites={favorites} collections={collections} handleToggleFavorite={handleToggleFavorite} openCollectionModal={openCollectionModal} />} />
+            <Route path="/" element={<MainContent photos={photos} favorites={favorites} collections={collections} handleToggleFavorite={handleToggleFavorite} setCollections={setCollections} />} />
             <Route path="/Favorites" element={<Favorites photos={favorites} />} />
             <Route path="/MyPics" element={<MyPics />} />
             <Route path="/Collections" element={<Collections collections={collections} addCollection={handleAddToCollection} />} />

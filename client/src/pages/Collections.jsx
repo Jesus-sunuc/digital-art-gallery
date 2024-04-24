@@ -1,74 +1,60 @@
-// import React, { useState } from 'react';
-
-// function Collections({ collections, addCollection }) {
-//   const [collectionName, setCollectionName] = useState('');
-
-//   const handleAddCollection = () => {
-//     if (!collectionName) return;
-//     addCollection({ name: collectionName, photos: [] });
-//     setCollectionName('');
-//   };
-
-//   return (
-//     <div className="collections">
-//       <h1>Collections</h1>
-//       <input 
-//         type="text" 
-//         value={collectionName} 
-//         onChange={(e) => setCollectionName(e.target.value)} 
-//         placeholder="New Collection Name" 
-//       />
-//       <button onClick={handleAddCollection}>Create Collection</button>
-//       {collections.map((collection, index) => (
-//         <div key={index}>
-//           <a>{collection.name}</a>
-//           <div>
-//             {collection.photos.length > 0 ? (
-//               collection.photos.map(photo => <img key={photo.id} src={photo.url} alt={photo.title} />)
-//             ) : (
-//               <p>No photos in this collection.</p>
-//             )}
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
-// export default Collections;
 import React, { useState } from 'react';
+import CollectionFormModal from '../components/collections/FormModal2.jsx';
+import '../components/collections/collections.css'
 
 function Collections({ collections, addCollection }) {
-  const [collectionName, setCollectionName] = useState('');
+  const [selectedCollectionId, setSelectedCollectionId] = useState(null);
+  const [showModal, setShowModal] = useState(false);  // State to control modal display
 
-  const handleAddCollection = () => {
-    if (!collectionName) return;
-    addCollection({ name: collectionName, photos: [] });
-    setCollectionName('');
+  const handleSelectCollection = (id) => {
+    setSelectedCollectionId(id);
+  };
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
-    <div className="collections">
-      <h1>Collections</h1>
-      <input 
-        type="text" 
-        value={collectionName} 
-        onChange={(e) => setCollectionName(e.target.value)} 
-        placeholder="New Collection Name" 
-      />
-      <button onClick={handleAddCollection}>Create Collection</button>
-      {collections.map((collection, index) => (
-        <div key={index}>
-          <a>{collection.name}</a>
-          <div>
-            {collection.photos.length > 0 ? (
-              collection.photos.map(photo => <img key={photo.id} src={photo.urls?.small || photo.url} alt={photo.description || photo.title} />)
-            ) : (
-              <p>No photos in this collection.</p>
-            )}
-          </div>
+    <div className="container">
+      <h2 className='favoriteh2'>Collections</h2>
+      <button onClick={openModal} className="new-collection-button">New Collection</button>
+      <div className="collection-list">
+        {collections.map((collection) => (
+          <button 
+            key={collection.id} 
+            onClick={() => handleSelectCollection(collection.id)}
+            className="collection-name-button"
+          >
+            {collection.name}
+          </button>
+        ))}
+      </div>
+      {selectedCollectionId && (
+        <div className="photos-fit">
+          {collections.find(col => col.id === selectedCollectionId)?.photos.length > 0 ? (
+            collections.find(col => col.id === selectedCollectionId).photos.map((photo, photoIndex) => (
+              <img 
+                key={photo.id || photoIndex} 
+                src={photo.urls?.small || photo.url || "./assets/img/logo.png"}
+                alt={photo.description || 'No description available'}
+              />
+            ))
+          ) : (
+            <p>No photos in this collection.</p>
+          )}
         </div>
-      ))}
+      )}
+      {showModal && (
+        <CollectionFormModal 
+          addCollection={addCollection}
+          closeModal={closeModal}
+          collections={collections}
+        />
+      )}
     </div>
   );
 }
