@@ -39,7 +39,7 @@ function App() {
     }
     setIsLoading(false);
   };
-
+  
   const handleToggleFavorite = (photo) => {
     const exists = favorites.some(f => f.id === photo.id);
     setFavorites(exists ? favorites.filter(f => f.id !== photo.id) : [...favorites, photo]);
@@ -54,13 +54,14 @@ function App() {
     if (!name) return;
     const newCollection = {
       id: Date.now(),
-      name: name,
-      description: description,
+      name,
+      description,
       photos: [selectedPhotoForCollection]
     };
-    setCollections([...collections, newCollection]);
+    setCollections(colls => [...colls, newCollection]); // Using functional update
     setShowCollectionModal(false);
   };
+  
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -78,7 +79,7 @@ function App() {
             <Route path="/" element={<MainContent photos={photos} favorites={favorites} collections={collections} handleToggleFavorite={handleToggleFavorite} openCollectionModal={openCollectionModal} />} />
             <Route path="/Favorites" element={<Favorites photos={favorites} />} />
             <Route path="/MyPics" element={<MyPics />} />
-            <Route path="/Collections" element={<Collections collections={collections} />} />
+            <Route path="/Collections" element={<Collections collections={collections} addCollection={handleAddToCollection} />} />
           </Routes>
           {showCollectionModal && (
             <CollectionFormModal addCollection={handleAddToCollection} closeModal={() => setShowCollectionModal(false)} />

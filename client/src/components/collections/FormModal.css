@@ -65,3 +65,8 @@
     opacity: 0.9;
   }
   
+  form {
+    background-color: #EFEFEF;
+    padding: 20px;
+    border-radius: 8px;
+  }
