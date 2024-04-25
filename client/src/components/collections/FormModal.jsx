@@ -9,7 +9,6 @@ function CollectionFormModal({ addCollection, addPhotoToCollection, collections,
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Reset form when opening modal
     setIsNewCollection(true);
     setName('');
     setDescription('');
@@ -51,7 +50,7 @@ function CollectionFormModal({ addCollection, addPhotoToCollection, collections,
           <h3>{isNewCollection ? "Add New Collection" : "Add to Existing Collection"}</h3>
 
           <div>
-            <label>
+            <label className='someSpace'>
               <input type="radio" checked={isNewCollection} onChange={() => setIsNewCollection(true)} />
               New Collection
             </label>

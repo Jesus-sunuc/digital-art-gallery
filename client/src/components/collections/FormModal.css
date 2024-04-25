@@ -24,10 +24,30 @@
   .modal-content form {
     display: flex;
     flex-direction: column;
+    background-color: #6a6f7f;
+    padding: 20px;
+    border-radius: 8px;
+    color: #fff;
   }
   
   .modal-content form label {
     margin-bottom: 5px;
+    font-size: 18px;
+  }
+
+  .modal-content form select {
+    margin: 20px 0px;
+    border-radius: 5px;
+    background-color: #205375;
+    color: #fff;
+    border: none;
+  }
+
+  .modal-content form option {
+    border-radius: 5px;
+    background-color: #205375;
+    color: #fff;
+    border: none;
   }
   
   .modal-content form input,
@@ -64,10 +84,7 @@
   .modal-button:hover {
     opacity: 0.9;
   }
-  
-  form {
-    background-color: #6d7180;
-    padding: 20px;
-    border-radius: 8px;
-    color: #fff;
+
+  .someSpace {
+    margin-right: 10px;
   }
