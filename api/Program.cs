@@ -1,3 +1,5 @@
+const apiAddress = "https://localhost:"
+
 using Microsoft.Extensions.FileProviders;
 var builder = WebApplication.CreateBuilder(args);
 
