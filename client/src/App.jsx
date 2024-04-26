@@ -97,7 +97,7 @@ function App() {
             <Route path="/" element={<MainContent photos={photos} favorites={favorites} collections={collections} handleToggleFavorite={handleToggleFavorite} setCollections={setCollections} />} />
             <Route path="/Favorites" element={<Favorites photos={favorites} onDelete={deleteFav} />} />
             <Route path="/MyPics" element={<MyPics onDelete1={deleteMyPics} />} />
-            <Route path="/Collections" element={<Collections collections={collections} addCollection={addCollection} />} />
+            <Route path="/Collections" element={<Collections collections={collections} addCollection={addCollection} setCollections={setCollections}/>} />
           </Routes>
           {showCollectionModal && (
             <CollectionFormModal addCollection={handleAddToCollection} closeModal={() => setShowCollectionModal(false)} />

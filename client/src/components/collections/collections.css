@@ -1,35 +1,70 @@
-
-.collection-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
+.collections-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  margin: auto;
 }
 
-.collection-name-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #F66B0E;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.control-area {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
 }
 
-.collection-name-button:hover {
-    background-color: #b35211;
+/* Styling for buttons */
+.collections-page {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.new-collection-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #1c7430;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.collections-page .new-collection-button {
+  background-color: #16a085;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
 }
+
+
+.collections-page .delete-icon {
+  background-color: red;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 10px 15px;
+  margin: 0px 40px;
+}
+
+/* Collection list styling */
+.collections-page .collection-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+
+.collections-page .collection-name-button {
+  background-color: #205375;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 5px;
+  width: calc(40% - 20px);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #fff;
+}
+
+.collections-page .collection-name-button:hover {
+  background-color: #3b8cc2;
+}
+
+
