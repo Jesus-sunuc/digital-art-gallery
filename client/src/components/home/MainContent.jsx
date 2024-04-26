@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CollectionFormModal from '../collections/FormModal.jsx';
+import CollectionFormModal from '../collections/FormModalHome.jsx';
 
 function MainContent({ photos, favorites, collections, handleToggleFavorite, setCollections }) {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
@@ -15,14 +15,13 @@ function MainContent({ photos, favorites, collections, handleToggleFavorite, set
   };
 
   const addPhotoToCollection = (collectionId, photo) => {
-    // Log incoming data to verify correctness
     console.log("Attempting to add photo to collection ID:", collectionId);
     console.log("Photo to add:", photo);
 
     setCollections(prevCollections => {
         const updatedCollections = prevCollections.map(collection => {
             if (collection.id === collectionId) {
-                // Ensure new photo is not already in the collection
+                // Check if the photo is already in the collection
                 if (!collection.photos.some(p => p.id === photo.id)) {
                     console.log("Adding new photo to collection:", collection.name);
                     return { ...collection, photos: [...collection.photos, photo] };
@@ -34,13 +33,12 @@ function MainContent({ photos, favorites, collections, handleToggleFavorite, set
             return collection;
         });
 
-        // Log the updated collections to verify changes
         console.log("Updated collections after adding photo:", updatedCollections);
         return updatedCollections;
     });
 };
 
-  
+
   const isInCollection = (photo) => {
     return collections.some(collection => collection.photos.some(p => p.id === photo.id));
   };

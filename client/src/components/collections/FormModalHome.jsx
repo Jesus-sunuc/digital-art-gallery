@@ -36,8 +36,8 @@ function CollectionFormModal({ addCollection, addPhotoToCollection, collections,
     setSelectedCollectionId('');
     setError('');
     closeModal();
-  };
-  
+};
+
 
   const handleModalClick = (e) => {
     e.stopPropagation();  // Prevents the modal from closing when clicking inside

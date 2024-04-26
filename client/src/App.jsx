@@ -9,7 +9,7 @@ import Favorites from "./pages/Favorites.jsx";
 import MyPics from "./pages/MyPics.jsx";
 import Collections from "./pages/Collections.jsx";
 import LoadingSpinner from "./components/spinner/LoadingSpinner.jsx";
-import CollectionFormModal from "./components/collections/FormModal.jsx"; // New component for the form
+import CollectionFormModal from "./components/collections/FormModalHome.jsx"; // New component for the form
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
 
@@ -19,11 +19,13 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [images, setImages] = useState([]);
   const [photos, setPhotos] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [collections, setCollections] = useState([]);
   const [showCollectionModal, setShowCollectionModal] = useState(false);
   const [selectedPhotoForCollection, setSelectedPhotoForCollection] = useState(null);
+  
 
   function toggleTheme() {
     setDarkMode(!darkMode);
@@ -56,8 +58,29 @@ function App() {
     setCollections(colls => [...colls, newCollection]);
     setShowCollectionModal(false);
   };
+
+  const addCollection = (name, description) => {
+    const newCollection = {
+      id: Date.now(),  // simple unique ID
+      name: name,
+      description: description,
+      photos: []  // start with an empty array of photos
+    };
+    setCollections([...collections, newCollection]);
+  };
+
+  const deleteFav = (photoId) => {
+    const newFavorites = favorites.filter(photo => photo.id !== photoId);
+    setFavorites(newFavorites);
+  };
   
 
+  const deleteMyPics = (index) => {
+    console.log("Deleting image at index:", index);
+    setImages(currentImages => currentImages.filter((_, idx) => idx !== index));
+  };
+  
+  
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
@@ -72,9 +95,9 @@ function App() {
           {isLoading && <LoadingSpinner />}
           <Routes>
             <Route path="/" element={<MainContent photos={photos} favorites={favorites} collections={collections} handleToggleFavorite={handleToggleFavorite} setCollections={setCollections} />} />
-            <Route path="/Favorites" element={<Favorites photos={favorites} />} />
-            <Route path="/MyPics" element={<MyPics />} />
-            <Route path="/Collections" element={<Collections collections={collections} addCollection={handleAddToCollection} />} />
+            <Route path="/Favorites" element={<Favorites photos={favorites} onDelete={deleteFav} />} />
+            <Route path="/MyPics" element={<MyPics onDelete1={deleteMyPics} />} />
+            <Route path="/Collections" element={<Collections collections={collections} addCollection={addCollection} />} />
           </Routes>
           {showCollectionModal && (
             <CollectionFormModal addCollection={handleAddToCollection} closeModal={() => setShowCollectionModal(false)} />

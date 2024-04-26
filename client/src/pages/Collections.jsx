@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
-import CollectionFormModal from '../components/collections/FormModal2.jsx';
-import '../components/collections/collections.css'
+import React, { useState, useEffect } from 'react';
+import '../components/collections/collections.css';
+import CollectionFormModal2 from '../components/collections/FormModalCol.jsx';
+
 
 function Collections({ collections, addCollection }) {
   const [selectedCollectionId, setSelectedCollectionId] = useState(null);
-  const [showModal, setShowModal] = useState(false);  // State to control modal display
+  const [selectedPhotos, setSelectedPhotos] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    console.log("Collections updated:", collections);
+  }, [collections]);
+  
+
+  useEffect(() => {
+    const selectedCollection = collections.find(col => col.id === selectedCollectionId);
+    if (selectedCollection) {
+      setSelectedPhotos(selectedCollection.photos);
+    }
+  }, [selectedCollectionId, collections]);  // Depend on collections to update photos
 
   const handleSelectCollection = (id) => {
     setSelectedCollectionId(id);
@@ -33,23 +47,21 @@ function Collections({ collections, addCollection }) {
           </button>
         ))}
       </div>
-      {selectedCollectionId && (
+      {selectedPhotos.length > 0 ? (
         <div className="photos-fit">
-          {collections.find(col => col.id === selectedCollectionId)?.photos.length > 0 ? (
-            collections.find(col => col.id === selectedCollectionId).photos.map((photo, photoIndex) => (
-              <img 
-                key={photo.id || photoIndex} 
-                src={photo.urls?.small || photo.url || "./assets/img/logo.png"}
-                alt={photo.description || 'No description available'}
-              />
-            ))
-          ) : (
-            <p>No photos in this collection.</p>
-          )}
+          {selectedPhotos.map((photo, photoIndex) => (
+            <img 
+              key={photo.id || photoIndex} 
+              src={photo.urls?.small || photo.url || "./assets/img/logo.png"}
+              alt={photo.description || 'No description available'}
+            />
+          ))}
         </div>
+      ) : (
+        <p>No photos in this collection.</p>
       )}
       {showModal && (
-        <CollectionFormModal 
+        <CollectionFormModal2 
           addCollection={addCollection}
           closeModal={closeModal}
           collections={collections}

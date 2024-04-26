@@ -1,19 +1,24 @@
 import React, { useState, useRef } from 'react';
-import './FileUploadForm.css'; 
+import './FileUploadForm.css';
 
 function FileUploadForm({ uploadUrl }) {
   const [message, setMessage] = useState('');
-  const [messageType, setMessageType] = useState(''); 
+  const [messageType, setMessageType] = useState('');
   const fileInputRef = useRef(null);
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
+      if (!file.type.startsWith('image/')) {
+        displayMessage("Please upload an image file.", "warning");
+        return;
+      }
+
       const formData = new FormData();
       formData.append("uploadedImage", file);
 
       try {
-        const response = await fetch(uploadUrl, { 
+        const response = await fetch(uploadUrl, {
           method: "POST",
           body: formData
         });
@@ -21,7 +26,8 @@ function FileUploadForm({ uploadUrl }) {
         if (response.ok) {
           displayMessage("File uploaded successfully.", "success");
         } else {
-          displayMessage(`File upload failed: ${response.status}`, "error");
+          const errorText = await response.text(); // Assuming the server sends back a plain text error message
+          displayMessage(`File upload failed: ${response.status} - ${errorText}`, "error");
         }
       } catch (error) {
         displayMessage(`Error uploading file: ${error.message}`, "error");
@@ -29,7 +35,7 @@ function FileUploadForm({ uploadUrl }) {
     } else {
       displayMessage("No file selected for upload.", "warning");
     }
-    event.target.value = ''; // Reset the file input
+    event.target.value = '';
   };
 
   const displayMessage = (msg, type) => {
@@ -38,13 +44,13 @@ function FileUploadForm({ uploadUrl }) {
     setTimeout(() => {
       setMessage('');
       setMessageType('');
-    }, 3000); // Remove the message after 3 seconds
+    }, 2000); 
   };
 
   return (
     <>
       <input
-        id='fileUpload'
+        id="fileUpload"
         type="file"
         ref={fileInputRef}
         onChange={handleFileChange}
@@ -57,7 +63,7 @@ function FileUploadForm({ uploadUrl }) {
         Upload File
       </button>
       {message && (
-        <div className={`alert ${messageType}`}>
+        <div className={`alert alert-${messageType}`}>
           {message}
         </div>
       )}

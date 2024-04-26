@@ -1,29 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../collections/FormModal.css'; 
 
-function CollectionFormModal({ addCollection, closeModal }) {
+function CollectionFormModal2({ addCollection, closeModal, photo }) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    setName('');
+    setDescription('');
+    setError('');
+  }, [photo]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!name.trim()) {
-      alert('Please enter a valid collection name.');
+      setError('Please enter a valid collection name.');
       return;
     }
-    addCollection({ name, description, photos: [] });
-    closeModal();  // Close modal after adding
+    addCollection(name, description, photo);
+    setName('');
+    setDescription('');
+    setError('');
+    closeModal();
   };
+
+  const handleModalClick = (e) => {
+    e.stopPropagation();  // Prevents the modal from closing when clicking inside
+  }
 
   return (
     <div className="modal-background" onClick={closeModal}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
+      <div className="modal-content" onClick={handleModalClick}>
         <form onSubmit={handleSubmit}>
           <h3>Add New Collection</h3>
           <label>Name:</label>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
           <label>Description:</label>
           <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+
+          {error && <p className="error-message">{error}</p>}
+
           <div className="modal-buttons">
             <button type="submit" className="modal-button submit">Add Collection</button>
             <button type="button" className="modal-button cancel" onClick={closeModal}>Cancel</button>
@@ -34,4 +51,4 @@ function CollectionFormModal({ addCollection, closeModal }) {
   );
 }
 
-export default CollectionFormModal;
+export default CollectionFormModal2;
