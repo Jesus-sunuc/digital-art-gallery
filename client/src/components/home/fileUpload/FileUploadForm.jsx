@@ -60,6 +60,7 @@ function FileUploadForm({ uploadUrl }) {
         className="btn btn-success"
         onClick={() => fileInputRef.current.click()}
       >
+        <i class="btn_space bi bi-cloud-arrow-up-fill"></i>
         Upload File
       </button>
       {message && (

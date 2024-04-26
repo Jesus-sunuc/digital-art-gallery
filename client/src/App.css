@@ -21,9 +21,8 @@
 
 /* ===================== GENERAL ===================== */
 .icon-space {
-  margin-left: 40px;
+  margin-left: 20px;
 }
-
 
 /* ===================== Favorites ===================== */
 .favoriteh2 {
@@ -53,7 +52,7 @@
 /* ===================== HEADER ===================== */
 header {
   padding: 30px 0px;
-  background-color: #205375;
+  background-color: #056674;
 }
 
 .navigation {
@@ -75,12 +74,20 @@ header {
 }
 
 .navigation a {
-  color: #000;
   text-decoration: none;
+  font-size: 18px;
+  color: #fff;
+}
+
+.navigation a:hover,
+.navigation a.selected {
+  text-decoration: underline;
+  color: #ebdbdb;
 }
 
 .btn_space {
-  margin-right: 20px;
+  margin-right: 5px;
+  font-size: 21px;
 }
 
 .iconsSize {
@@ -92,7 +99,6 @@ header {
 #fileUpload {
   display: none;
 }
-
 
 /* ==================== MAIN CONTENT ====================== */
 #images {
@@ -159,6 +165,46 @@ button {
   border: none;
 }
 
+
+.search-container {
+  margin: 20px auto;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:hover,
+.search-input:focus {
+  border-color: #888;
+}
+
+.search-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  border: none;
+  background-size: 20px;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.search-btn:hover,
+.search-btn:focus {
+  background-color: #f0f0f0;
+}
+
+
 /* ======================= COLLECTION ========================== */
 .collection-options {
   position: fixed;
@@ -176,7 +222,7 @@ button {
 /* ======================= FOOTER ========================== */
 footer {
   margin-top: 40px;
-  background-color: #205375;
+  background-color: #056674;
   color: #fff;
 }
 
@@ -201,11 +247,4 @@ footer {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-
-@media only screen and (max-width: 768px) {
-  #space {
-    margin-bottom: 20px;
-  }
-}
-
 

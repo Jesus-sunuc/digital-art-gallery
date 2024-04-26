@@ -11,8 +11,9 @@ function Header({ darkMode, toggleTheme, searchQuery, setSearchQuery, handleSear
             <Link to="/" className="logo">DA</Link>
           </div>
           <div className="col-12 col-md-6">
+          <div class="search-container">
             <input
-              className="form-control"
+              className="search-input"
               type="search"
               placeholder="Search"
               value={searchQuery}
@@ -20,6 +21,7 @@ function Header({ darkMode, toggleTheme, searchQuery, setSearchQuery, handleSear
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
               aria-label="Search"
             />
+          </div>
           </div>
           <div className="col-12 col-md-3 text-md-end">
             <FileUploadForm uploadUrl="http://localhost:5078/imageUpload" />
@@ -31,10 +33,10 @@ function Header({ darkMode, toggleTheme, searchQuery, setSearchQuery, handleSear
         <div className="row">
           <div className="col-12">
             <nav className="navigation flex-wrap justify-content-around">
-              <Link to="/" className="btn btn-light">Home</Link>
-              <Link to="/Favorites" className="btn btn-light">Favorites</Link>
-              <Link to="/MyPics" className="btn btn-light">My Pics</Link>
-              <Link to="/Collections" className="btn btn-light">Collections</Link>
+              <Link to="/" className="btn-style">Home</Link>
+              <Link to="/Favorites" className="btn-style">Favorites</Link>
+              <Link to="/MyPics" className="btn-style">My Pics</Link>
+              <Link to="/Collections" className="btn-style">Collections</Link>
             </nav>
           </div>
         </div>

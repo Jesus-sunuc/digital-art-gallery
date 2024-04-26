@@ -15,33 +15,24 @@ function MainContent({ photos, favorites, collections, handleToggleFavorite, set
   };
 
   const addPhotoToCollection = (collectionId, photo) => {
-    console.log("Attempting to add photo to collection ID:", collectionId);
-    console.log("Photo to add:", photo);
-
     setCollections(prevCollections => {
         const updatedCollections = prevCollections.map(collection => {
             if (collection.id === collectionId) {
-                // Check if the photo is already in the collection
                 if (!collection.photos.some(p => p.id === photo.id)) {
-                    console.log("Adding new photo to collection:", collection.name);
                     return { ...collection, photos: [...collection.photos, photo] };
                 } else {
-                    console.log("Photo already exists in collection:", collection.name);
                     return collection;
                 }
             }
             return collection;
         });
-
-        console.log("Updated collections after adding photo:", updatedCollections);
         return updatedCollections;
     });
 };
 
-
-  const isInCollection = (photo) => {
-    return collections.some(collection => collection.photos.some(p => p.id === photo.id));
-  };
+const isInCollection = (photo) => {
+  return collections.some(collection => collection.photos.some(p => p.id === photo.id));
+};
 
   return (
     <main className="container">
