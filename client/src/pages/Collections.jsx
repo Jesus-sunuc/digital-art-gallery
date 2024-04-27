@@ -72,7 +72,7 @@ function Collections({ collections, setCollections, addCollection }) {
 
   return (
     <div className="collections-page container">
-      <h2 className='favoriteh2'>Collections</h2>
+      <h2 className='styleh2'>Collections</h2>
       <button onClick={openModal} className="new-collection-button">New Collection</button>
       <div className="control-area">
         <div className="collection-list">

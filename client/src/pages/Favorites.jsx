@@ -1,9 +1,10 @@
 import React from 'react';
+import '../components/favorites/favorites.css';
 
 function Favorites({ photos, onDelete }) {
   return (
     <div className="container">
-      <h2 className='favoriteh2'>Favorites</h2>
+      <h2 className='styleh2'>Favorites</h2>
       <div className="photos-fit">
         {photos.map(photo => (
           <div key={photo.id}>

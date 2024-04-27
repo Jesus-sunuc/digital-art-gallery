@@ -1,3 +1,4 @@
+/* ===================== GLOBAL ===================== */
 @font-face {
   font-family: 'IndieFlowers';
   src: url('./assets/fonts/IndieFlower-Regular.ttf');
@@ -19,34 +20,12 @@
   box-sizing: border-box;
 }
 
-/* ===================== GENERAL ===================== */
 .icon-space {
   margin-left: 20px;
 }
 
-/* ===================== Favorites ===================== */
-.favoriteh2 {
+.styleh2 {
   margin: 20px 0px;
-}
-
-.delete-button {
-  margin-top: 15px;
-  padding: 5px 10px;
-  background-color: #C40C0C;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-.delete-button:hover {
-  background-color: #f01b1b;
-}
-
-.text-left {
-  text-align: left;
-  margin-bottom: 20px;
 }
 
 /* ===================== HEADER ===================== */
@@ -101,9 +80,53 @@ header {
 }
 
 /* ==================== MAIN CONTENT ====================== */
-#images {
-  margin-bottom: 40px;
-  box-sizing: border-box;
+
+.photo-carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #056674;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 100;
+  border-radius: 10px;
+  outline: none;
+  font-size: 30px;
+}
+
+.photo-carousel button:hover {
+  background-color: #056674;
+}
+
+.photo-carousel .prev {
+  left: 40px;
+}
+
+.photo-carousel .next {
+  right: 40px;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.homeh2 {
+  position: absolute;
+  font-size: 45px;
+  left: 45%;
+  top: 40%;
+  color: white;
+  z-index: 10; 
+}
+
+.photo-carousel img {
+  display: block;
+  width: 100%;
+  height: 350px;
 }
 
 .photos-fit {
@@ -111,6 +134,7 @@ header {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 15px;
   justify-content: center;
+  margin: 20px 0px;
 }
 
 .photos-fit-icon {
@@ -165,7 +189,6 @@ button {
   border: none;
 }
 
-
 .search-container {
   margin: 20px auto;
   position: relative;
@@ -204,24 +227,8 @@ button {
   background-color: #f0f0f0;
 }
 
-
-/* ======================= COLLECTION ========================== */
-.collection-options {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  z-index: 1000;
-}
-
-
 /* ======================= FOOTER ========================== */
 footer {
-  margin-top: 40px;
   background-color: #056674;
   color: #fff;
 }

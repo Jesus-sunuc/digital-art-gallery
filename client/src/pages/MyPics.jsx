@@ -22,7 +22,7 @@ function MyPics({ onDelete1 }) {
 
   return (
     <div className="container">
-      <h2 className="favoriteh2">My Pictures</h2>
+      <h2 className="styleh2">My Pictures</h2>
       <div className="photos-fit">
       {images.map((img, index) => (
           <div key={index}>
