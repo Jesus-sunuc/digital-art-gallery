@@ -3,12 +3,10 @@ import '../collections/FormModal.css';
 
 function CollectionFormModal2({ addCollection, closeModal, photo }) {
   const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
     setName('');
-    setDescription('');
     setError('');
   }, [photo]);
 
@@ -18,9 +16,8 @@ function CollectionFormModal2({ addCollection, closeModal, photo }) {
       setError('Please enter a valid collection name.');
       return;
     }
-    addCollection(name, description, photo);
+    addCollection(name, photo);
     setName('');
-    setDescription('');
     setError('');
     closeModal();
   };
@@ -35,10 +32,7 @@ function CollectionFormModal2({ addCollection, closeModal, photo }) {
         <form onSubmit={handleSubmit}>
           <h3>Add New Collection</h3>
           <label>Name:</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-          <label>Description:</label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
           {error && <p className="error-message">{error}</p>}
 
           <div className="modal-buttons">

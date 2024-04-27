@@ -66,7 +66,8 @@ function Collections({ collections, setCollections, addCollection }) {
               draggable
               onClick={() => handleSelectCollection(collection.id)}
               onDragStart={() => handleDragStart(collection.id)}
-              className="collection-name-button">
+              className="collection-name-button"
+>
               {collection.name}
             </div>
           ))}

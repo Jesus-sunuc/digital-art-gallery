@@ -4,14 +4,12 @@ import '../collections/FormModal.css';
 function CollectionFormModal({ addCollection, addPhotoToCollection, collections, closeModal, photo }) {
   const [isNewCollection, setIsNewCollection] = useState(true);
   const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
   const [selectedCollectionId, setSelectedCollectionId] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
     setIsNewCollection(true);
     setName('');
-    setDescription('');
     setSelectedCollectionId('');
     setError('');
     resetForm();
@@ -20,7 +18,6 @@ function CollectionFormModal({ addCollection, addPhotoToCollection, collections,
   const resetForm = () => {
     setIsNewCollection(true);
     setName('');
-    setDescription('');
     setSelectedCollectionId('');
     setError('');
   };
@@ -32,7 +29,7 @@ function CollectionFormModal({ addCollection, addPhotoToCollection, collections,
         setError('Please enter a valid collection name.');
         return;
       }
-      addCollection(name, description, photo);
+      addCollection(name, photo);
     } else {
       if (!selectedCollectionId) {
         setError('Please select a collection.');
@@ -40,7 +37,7 @@ function CollectionFormModal({ addCollection, addPhotoToCollection, collections,
       }
       addPhotoToCollection(selectedCollectionId, photo);
     }
-    resetForm(); // Call resetForm to reset state
+    resetForm();
     closeModal();
 };
 
@@ -82,12 +79,6 @@ function CollectionFormModal({ addCollection, addPhotoToCollection, collections,
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                required
-              />
-              <label>Description:</label>
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
               />
               <div className="modal-buttons">
                 <button type="submit" className="modal-button submit">Add Collection</button>
@@ -100,7 +91,6 @@ function CollectionFormModal({ addCollection, addPhotoToCollection, collections,
               <select
                 value={selectedCollectionId}
                 onChange={(e) => setSelectedCollectionId(e.target.value)}
-                required
               >
                 <option value="">Select a collection</option>
                 {collections.map((collection) => (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import unsplashService from "./service/externalAPIService.jsx";
@@ -11,13 +11,17 @@ import Contact from "./pages/Contact.jsx";
 import Collections from "./pages/Collections.jsx";
 import LoadingSpinner from "./components/spinner/LoadingSpinner.jsx";
 import CollectionFormModal from "./components/collections/FormModalHome.jsx"; 
+import ThemeManager from './components/themeManager/ThemeManager.jsx'; // Assuming ThemeManager is properly defined and imported
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
 
 const queryClient = new QueryClient();
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode ? JSON.parse(savedMode) : false;
+  });
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [images, setImages] = useState([]);
@@ -27,6 +31,9 @@ function App() {
   const [showCollectionModal, setShowCollectionModal] = useState(false);
   const [selectedPhotoForCollection, setSelectedPhotoForCollection] = useState(null);
   
+  useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+  }, [darkMode]);
 
   function toggleTheme() {
     setDarkMode(!darkMode);
@@ -48,23 +55,21 @@ function App() {
     setFavorites(exists ? favorites.filter(f => f.id !== photo.id) : [...favorites, photo]);
   };
 
-  const handleAddToCollection = (name, description) => {
+  const handleAddToCollection = (name) => {
     if (!name) return;
     const newCollection = {
       id: Date.now(),
       name,
-      description,
       photos: [selectedPhotoForCollection]
     };
     setCollections(colls => [...colls, newCollection]);
     setShowCollectionModal(false);
   };
 
-  const addCollection = (name, description) => {
+  const addCollection = (name) => {
     const newCollection = {
       id: Date.now(),
       name: name,
-      description: description,
       photos: [] 
     };
     setCollections([...collections, newCollection]);
@@ -75,16 +80,14 @@ function App() {
     setFavorites(newFavorites);
   };
   
-
   const deleteMyPics = (index) => {
-    console.log("Deleting image at index:", index);
     setImages(currentImages => currentImages.filter((_, idx) => idx !== index));
   };
-  
   
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+        <ThemeManager setDarkMode={setDarkMode} />
         <div className={`text-center ${darkMode ? "bg-dark text-white" : "bg-light text-dark"}`}>
           <Header
             darkMode={darkMode}
