@@ -10,18 +10,27 @@ function Collections({ collections, setCollections, addCollection }) {
   const deleteRef = useRef(null);
 
   useEffect(() => {
-    const selectedCollection = collections.find((col) => col.id === selectedCollectionId);
+    const selectedCollection = collections.find(col => col.id === selectedCollectionId);
     if (selectedCollection) {
       setSelectedPhotos(selectedCollection.photos);
     }
   }, [selectedCollectionId, collections]);
 
   useEffect(() => {
-      const handleDropToDelete = (event) => {
+    const handleDragOver = (event) => {
       event.preventDefault();
+      if (deleteRef.current) {
+        deleteRef.current.style.backgroundColor = '#998a8a';
+      }
+    };
+
+    const handleDropToDelete = (event) => {
+      event.preventDefault();
+      console.log('Drop event triggered for ID:', draggedId);
       if (draggedId !== null) {
-        const updatedCollections = collections.filter((col) => col.id !== draggedId);
+        const updatedCollections = collections.filter(col => col.id !== draggedId);
         setCollections(updatedCollections);
+        console.log('Collections after delete:', updatedCollections);
         setDraggedId(null);
       }
       if (deleteRef.current) {
@@ -29,17 +38,17 @@ function Collections({ collections, setCollections, addCollection }) {
       }
     };
 
-    const handleDragOver = (event) => {
-      event.preventDefault();
-    };
-
     const deleteElement = deleteRef.current;
-    deleteElement.addEventListener('dragover', handleDragOver);
-    deleteElement.addEventListener('drop', handleDropToDelete);
+    if (deleteElement) {
+      deleteElement.addEventListener('dragover', handleDragOver);
+      deleteElement.addEventListener('drop', handleDropToDelete);
+    }
 
     return () => {
-      deleteElement.removeEventListener('dragover', handleDragOver);
-      deleteElement.removeEventListener('drop', handleDropToDelete);
+      if (deleteElement) {
+        deleteElement.removeEventListener('dragover', handleDragOver);
+        deleteElement.removeEventListener('drop', handleDropToDelete);
+      }
     };
   }, [draggedId, collections, setCollections]);
 
@@ -51,6 +60,7 @@ function Collections({ collections, setCollections, addCollection }) {
   const closeModal = () => setShowModal(false);
 
   const handleDragStart = (id) => {
+    console.log('Drag started for ID:', id);
     setDraggedId(id);
   };
 
@@ -66,8 +76,7 @@ function Collections({ collections, setCollections, addCollection }) {
               draggable
               onClick={() => handleSelectCollection(collection.id)}
               onDragStart={() => handleDragStart(collection.id)}
-              className="collection-name-button"
->
+              className="collection-name-button">
               {collection.name}
             </div>
           ))}
@@ -75,10 +84,9 @@ function Collections({ collections, setCollections, addCollection }) {
         <div className="button-group">
           <div
             ref={deleteRef}
-            className="delete-icon"
-            onDragEnter={(e) => e.currentTarget.style.backgroundColor = 'red'}
-            onDragLeave={(e) => e.currentTarget.style.backgroundColor = ''} >
-            <i className="bi bi-trash-fill"></i>
+            className="delete-icon">
+            <i className="bi bi-trash-fill"></i><br />
+            <span>Drop here to delete</span>
           </div>
         </div>
       </div>
@@ -88,7 +96,6 @@ function Collections({ collections, setCollections, addCollection }) {
             <img 
               key={photo.id}
               src={photo.urls?.small || photo.url}
-              alt={photo.description || 'No description available'}
             />
           ))}
         </div>
@@ -104,4 +111,3 @@ function Collections({ collections, setCollections, addCollection }) {
 }
 
 export default Collections;
-  

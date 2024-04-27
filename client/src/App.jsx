@@ -11,7 +11,7 @@ import Contact from "./pages/Contact.jsx";
 import Collections from "./pages/Collections.jsx";
 import LoadingSpinner from "./components/spinner/LoadingSpinner.jsx";
 import CollectionFormModal from "./components/collections/FormModalHome.jsx"; 
-import ThemeManager from './components/themeManager/ThemeManager.jsx'; // Assuming ThemeManager is properly defined and imported
+import ThemeManager from './components/themeManager/ThemeManager.jsx';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
 

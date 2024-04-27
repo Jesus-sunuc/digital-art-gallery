@@ -1,11 +1,3 @@
-:root {
-  --new_collection_button: #16a085;
-  --white_color: #fff;
-  --delete_button: #eb1f1f;
-  --shadow: rgba(0,0,0,0.1);
-  --nth_child_color: #34495E;
-}
-
 .collections-page {
   display: flex;
   flex-direction: column;
@@ -17,9 +9,13 @@
 
 .control-area {
   display: flex;
-  justify-content: space-between;
   width: 100%;
   align-items: center;
+}
+
+.button-group {
+  width: 100%;
+  margin: 20px 0px;
 }
 
 .collections-page {
@@ -40,18 +36,22 @@
 }
 
 .collections-page .delete-icon {
-  background-color: var(--delete_button);
+  background-color: var(--delete_space);
   color: var(--white_color);
   border-radius: 5px;
   font-size: 20px;
-  padding: 10px 15px;
+  padding: 50px 15px;
   margin: 0px 40px;
+}
+
+.collections-page .delete-icon {
+  font-size: 30px;
 }
 
 .collections-page .collection-list {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
 }
 
@@ -72,5 +72,5 @@
 }
 
 .collections-page .collection-name-button:nth-child(even) {
-  background-color: var(--new_collection_button);
+  background-color: var(--dropdown_button);
 }

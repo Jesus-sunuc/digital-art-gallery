@@ -24,6 +24,24 @@
   --hover_header: #e6ebdb;
   --icons_fit_color: #5497a1;
   --icons_added: #e8ebd9;
+  --delete_button: #eb1f1f;
+  --hover_delete_button: #f01b1b;
+  --dropdown_button: #0e7bad;
+  --delete_space: #ada1a1;
+  --nth_child_color: #34495E;
+  --new_collection_button: #16a085;
+
+  --bg_sucess: #d4edda;
+  --c_success: #155724;
+  --border_success: #c3e6cb;
+  
+  --bg_error: #f8d7da;
+  --c_error: #f01b1b;
+  --border_error: #f5c6cb;
+
+  --bg_warning: #fff3cd;
+  --c_warning: #856404;
+  --border_warning: #ffeeba;
 }
 
 * {

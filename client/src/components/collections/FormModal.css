@@ -1,13 +1,3 @@
-:root {
-  --new_collection_button: #16a085;
-  --white_color: #fff;
-  --delete_button: #eb1f1f;
-  --shadow: rgba(0,0,0,0.1);
-  --nth_child_color: #34495E;
-  --add_button: #007bff;
-  --grey_color: #ccc;
-}
-
 
 .modal-background {
     position: fixed;

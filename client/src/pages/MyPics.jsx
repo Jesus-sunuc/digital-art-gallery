@@ -8,7 +8,7 @@ function MyPics({ onDelete1 }) {
   const handleFetchImages = async () => {
     try {
       const images = await fetchImages();
-      console.log("Fetched images:", images); // Log fetched images to verify their structure
+      console.log("Fetched images:", images);
       setImages(images);
     } catch (error) {
       setError("Failed to load images.");
@@ -26,12 +26,7 @@ function MyPics({ onDelete1 }) {
       <div className="photos-fit">
       {images.map((img, index) => (
           <div key={index}>
-            <img src={img.url || img} alt="Uploaded content" /> {/* Adjust depending on structure */}
-            <div className="text-left">
-              <button onClick={() => onDelete1(index)} className="delete-button">
-              <i class="bi bi-trash-fill"></i>
-              </button>
-            </div>
+            <img src={img.url || img} alt="Uploaded content" />
           </div>
         ))}
       </div>
