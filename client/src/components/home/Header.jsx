@@ -6,40 +6,55 @@ function Header({ darkMode, toggleTheme, searchQuery, setSearchQuery, handleSear
   return (
     <header>
       <div className="container">
-        <div className="row justify-content-between align-items-center mb-3">
-          <div className="col-12 col-md-3 text-md-start">
-            <Link to="/" className="logo">DA</Link>
+        <section id="first_half_header">
+          <div className="row justify-content-between align-items-center mb-3">
+            <div className="col-12 col-md-3 text-md-start">
+              <Link to="/" className="logo">DA</Link>
+            </div>
+            <div className="col-12 col-md-6">
+            <div class="search-container">
+              <input
+                className="search-input"
+                type="search"
+                placeholder="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                aria-label="Search"
+              />
+            </div>
+            </div>
+            <div className="col-12 col-md-3 text-md-end">
+              <FileUploadForm uploadUrl="http://localhost:5078/imageUpload" />
+              <i className={`icon-space iconsSize bi ${darkMode ? "bi-toggle-on" : "bi-toggle-off"}`}
+                onClick={toggleTheme}>
+              </i>
+            </div>
           </div>
-          <div className="col-12 col-md-6">
-          <div class="search-container">
-            <input
-              className="search-input"
-              type="search"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              aria-label="Search"
-            />
+        </section>
+        <section id="second_half_header">
+          <div className="row">
+            <div className="col-12">
+              <nav className="navigation flex-wrap justify-content-around">
+                <Link to="/" className="btn-style">
+                  <i class="btn_space bi bi-house"></i>Home
+                </Link>
+                <Link to="/Favorites" className="btn-style">
+                  <i class="btn_space bi bi-heart"></i>Favorites
+                </Link>
+                <Link to="/MyPics" className="btn-style">
+                  <i class="btn_space bi bi-image"></i>My Pics
+                </Link>
+                <Link to="/Collections" className="btn-style">
+                  <i class="btn_space bi bi-collection"></i>Collections
+                </Link>
+                <Link to="/Contact" className='btn-style'>
+                  <i class="btn_space bi bi-envelope-check"></i>Contact
+                </Link>
+              </nav>
+            </div>
           </div>
-          </div>
-          <div className="col-12 col-md-3 text-md-end">
-            <FileUploadForm uploadUrl="http://localhost:5078/imageUpload" />
-            <i className={`icon-space iconsSize bi ${darkMode ? "bi-toggle-on" : "bi-toggle-off"}`}
-               onClick={toggleTheme}>
-            </i>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-12">
-            <nav className="navigation flex-wrap justify-content-around">
-              <Link to="/" className="btn-style">Home</Link>
-              <Link to="/Favorites" className="btn-style">Favorites</Link>
-              <Link to="/MyPics" className="btn-style">My Pics</Link>
-              <Link to="/Collections" className="btn-style">Collections</Link>
-            </nav>
-          </div>
-        </div>
+        </section>
       </div>
     </header>
   );

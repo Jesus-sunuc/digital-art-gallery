@@ -7,9 +7,10 @@ import MainContent from "./components/home/MainContent.jsx";
 import Footer from "./components/home/Footer.jsx";
 import Favorites from "./pages/Favorites.jsx";
 import MyPics from "./pages/MyPics.jsx";
+import Contact from "./pages/Contact.jsx";
 import Collections from "./pages/Collections.jsx";
 import LoadingSpinner from "./components/spinner/LoadingSpinner.jsx";
-import CollectionFormModal from "./components/collections/FormModalHome.jsx"; // New component for the form
+import CollectionFormModal from "./components/collections/FormModalHome.jsx"; 
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
 
@@ -61,10 +62,10 @@ function App() {
 
   const addCollection = (name, description) => {
     const newCollection = {
-      id: Date.now(),  // simple unique ID
+      id: Date.now(),
       name: name,
       description: description,
-      photos: []  // start with an empty array of photos
+      photos: [] 
     };
     setCollections([...collections, newCollection]);
   };
@@ -92,13 +93,14 @@ function App() {
             setSearchQuery={setSearchQuery}
             handleSearch={handleSearch}
           />
-          {isLoading && <LoadingSpinner />}
           <Routes>
             <Route path="/" element={<MainContent photos={photos} favorites={favorites} collections={collections} handleToggleFavorite={handleToggleFavorite} setCollections={setCollections} />} />
             <Route path="/Favorites" element={<Favorites photos={favorites} onDelete={deleteFav} />} />
             <Route path="/MyPics" element={<MyPics onDelete1={deleteMyPics} />} />
             <Route path="/Collections" element={<Collections collections={collections} addCollection={addCollection} setCollections={setCollections}/>} />
+            <Route path="/Contact" element={<Contact />}/>
           </Routes>
+          {isLoading && <LoadingSpinner />}
           {showCollectionModal && (
             <CollectionFormModal addCollection={handleAddToCollection} closeModal={() => setShowCollectionModal(false)} />
           )}

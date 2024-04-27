@@ -1,3 +1,14 @@
+:root {
+  --new_collection_button: #16a085;
+  --white_color: #fff;
+  --delete_button: #eb1f1f;
+  --shadow: rgba(0,0,0,0.1);
+  --nth_child_color: #34495E;
+  --add_button: #007bff;
+  --grey_color: #ccc;
+}
+
+
 .modal-background {
     position: fixed;
     top: 0;
@@ -12,7 +23,7 @@
   }
   
   .modal-content {
-    background: white;
+    background: var(--white_color);
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -24,10 +35,10 @@
   .modal-content form {
     display: flex;
     flex-direction: column;
-    background-color: #6a6f7f;
-    padding: 20px;
+    background-color: var(--nth_child_color);
+    padding: 50px;
     border-radius: 8px;
-    color: #fff;
+    color: var(--white_color);
   }
   
   .modal-content form label {
@@ -38,15 +49,15 @@
   .modal-content form select {
     margin: 20px 0px;
     border-radius: 5px;
-    background-color: #205375;
-    color: #fff;
+    background-color: var(--new_collection_button);
+    color: var(--white_color);
     border: none;
   }
 
   .modal-content form option {
     border-radius: 5px;
-    background-color: #205375;
-    color: #fff;
+    background-color: var(--new_collection_button);
+    color: var(--white_color);
     border: none;
   }
   
@@ -54,7 +65,7 @@
   .modal-content form textarea {
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--grey_color);
     border-radius: 4px;
   }
   
@@ -72,13 +83,13 @@
   }
   
   .modal-button.submit {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--add_button);
+    color: var(--white_color);
   }
   
   .modal-button.cancel {
-    background-color: #dc3545;
-    color: white;
+    background-color: var(--delete_button);
+    color: var(--white_color);
   }
   
   .modal-button:hover {

@@ -14,6 +14,18 @@
   src: url('./assets/fonts/Raleway-Light.ttf');
 }
 
+:root {
+  --submit_button: #20af6c;
+  --white_color: #fff;
+  --add_button: #007bff;
+  --grey_color: #ccc;
+  --black_color: #000;
+  --header_color: #056674;
+  --hover_header: #e6ebdb;
+  --icons_fit_color: #5497a1;
+  --icons_added: #e8ebd9;
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -31,7 +43,7 @@
 /* ===================== HEADER ===================== */
 header {
   padding: 30px 0px;
-  background-color: #056674;
+  background-color: var(--header_color);
 }
 
 .navigation {
@@ -49,19 +61,19 @@ header {
 .logo {
   font-family: 'IndieFlowers';
   font-size: 70px;
-  color: #fff;
+  color: var(--white_color);
 }
 
 .navigation a {
   text-decoration: none;
   font-size: 18px;
-  color: #fff;
+  color: var(--white_color);
 }
 
 .navigation a:hover,
 .navigation a.selected {
   text-decoration: underline;
-  color: #ebdbdb;
+  color: var(--hover_header);
 }
 
 .btn_space {
@@ -72,7 +84,7 @@ header {
 .iconsSize {
   font-size: 22px;
   cursor: pointer;
-  color: #fff;
+  color: var(--white_color);
 }
 
 #fileUpload {
@@ -85,8 +97,8 @@ header {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #056674;
-  color: white;
+  background-color: var(--header_color);
+  color: var(--white_color);
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -94,10 +106,6 @@ header {
   border-radius: 10px;
   outline: none;
   font-size: 30px;
-}
-
-.photo-carousel button:hover {
-  background-color: #056674;
 }
 
 .photo-carousel .prev {
@@ -119,7 +127,7 @@ header {
   font-size: 45px;
   left: 45%;
   top: 40%;
-  color: white;
+  color: var(--white_color);
   z-index: 10; 
 }
 
@@ -146,7 +154,7 @@ header {
   top: 15px;
   right: 10px;
   background-color: transparent;
-  color: #fff;  
+  color: var(--white_color);  
 }
 
 .photos-fit-icon-add {
@@ -154,7 +162,7 @@ header {
   top: 15px;
   right: 55px;
   background-color: transparent;
-  color: #fff;
+  color: var(--white_color);
 }
 
 .photos-fit img {
@@ -174,15 +182,15 @@ header {
 
 .icons-fit {
   font-size: 18px;
-  color: white;
-  background-color: rgb(163, 162, 162);
+  color: var(--white_color);
+  background-color: var(--icons_fit_color);
   padding: 5px 10px;
   border-radius: 5px;
 }
 
 .icons-fit-active {
-  background-color: #e8ebd9;
-  color: #20af6c;
+  background-color: var(--icons_added);
+  color: var(--submit_button);
 }
 
 button {
@@ -198,16 +206,12 @@ button {
   width: 100%;
   padding: 10px 15px;
   font-size: 16px;
-  border: 2px solid #ccc;
+  border: 2px solid var(--grey_color);
   border-radius: 10px;
   outline: none;
   transition: border-color 0.3s;
 }
 
-.search-input:hover,
-.search-input:focus {
-  border-color: #888;
-}
 
 .search-btn {
   position: absolute;
@@ -222,22 +226,17 @@ button {
   outline: none;
 }
 
-.search-btn:hover,
-.search-btn:focus {
-  background-color: #f0f0f0;
-}
-
 /* ======================= FOOTER ========================== */
 footer {
-  background-color: #056674;
-  color: #fff;
+  background-color: var(--header_color);
+  color: var(--white_color);
 }
 
 .footer-text-color {
   font-size: 25px;
   padding: 2px;
   border-radius: 5px;
-  color: #fff;
+  color: var(--white_color);
   cursor: pointer;
 }
 
