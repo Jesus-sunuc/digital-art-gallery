@@ -7,7 +7,10 @@ function Footer() {
         <div className="row">
           <div className="col-12 col-md-4">
             <h5>About Us</h5>
-            <p>Short description about the digital art gallery, its mission, or background.</p>
+            <p>
+              Short description about the digital art gallery, its mission, or
+              background.
+            </p>
           </div>
           <div className="col-12 col-md-4">
             <h5>Contact</h5>

@@ -46,30 +46,44 @@ function MainContent({
   return (
     <main>
       <div>
-        <figure className="carousel-container">
+        <div className="carousel-container">
           <h2 className="homeh2">Home</h2>
           <PhotoCarousel />
-        </figure>
+        </div>
         {showModal && <CollectionFormModal closeModal={closeModal} />}
       </div>
       <div className="container">
         <div className="photos-fit">
           {photos.map((photo) => (
-            <div className="photos-fit-icon" key={photo.id}>
-              <img src={photo.urls.small} alt={photo.description} />
-              <button className="button-fit-icon-fav" onClick={() => handleToggleFavorite(photo)}>
-                <i className={ favorites.some((f) => f.id === photo.id)
-                  ? "icons-fit-active icons-fit bi bi-heart-fill"
-                  : "icons-fit bi bi-heart-fill"}
-                ></i>
-              </button>
-              <button className="photos-fit-icon-add" onClick={() => openCollectionModal(photo)}>
-                <i className={isInCollection(photo)
-                  ? "icons-fit-active icons-fit bi bi-plus-circle-fill"
-                  : "icons-fit bi bi-plus-circle-fill"}
-                ></i>
-              </button>
-            </div>
+            <figure>
+              <div className="photos-fit-icon" key={photo.id}>
+                <img src={photo.urls.small} alt={photo.description} />
+                <button
+                  className="button-fit-icon-fav"
+                  onClick={() => handleToggleFavorite(photo)}
+                >
+                  <i
+                    className={
+                      favorites.some((f) => f.id === photo.id)
+                        ? "icons-fit-active icons-fit bi bi-heart-fill"
+                        : "icons-fit bi bi-heart-fill"
+                    }
+                  ></i>
+                </button>
+                <button
+                  className="photos-fit-icon-add"
+                  onClick={() => openCollectionModal(photo)}
+                >
+                  <i
+                    className={
+                      isInCollection(photo)
+                        ? "icons-fit-active icons-fit bi bi-plus-circle-fill"
+                        : "icons-fit bi bi-plus-circle-fill"
+                    }
+                  ></i>
+                </button>
+              </div>
+            </figure>
           ))}
         </div>
         {showModal && (

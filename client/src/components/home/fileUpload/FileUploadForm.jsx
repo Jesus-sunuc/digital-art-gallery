@@ -1,15 +1,15 @@
-import React, { useState, useRef } from 'react';
-import './FileUploadForm.css';
+import React, { useState, useRef } from "react";
+import "./FileUploadForm.scss";
 
 function FileUploadForm({ uploadUrl }) {
-  const [message, setMessage] = useState('');
-  const [messageType, setMessageType] = useState('');
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("");
   const fileInputRef = useRef(null);
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
-      if (!file.type.startsWith('image/')) {
+      if (!file.type.startsWith("image/")) {
         displayMessage("Please upload an image file.", "warning");
         return;
       }
@@ -20,14 +20,17 @@ function FileUploadForm({ uploadUrl }) {
       try {
         const response = await fetch(uploadUrl, {
           method: "POST",
-          body: formData
+          body: formData,
         });
 
         if (response.ok) {
           displayMessage("File uploaded successfully.", "success");
         } else {
           const errorText = await response.text(); // Assuming the server sends back a plain text error message
-          displayMessage(`File upload failed: ${response.status} - ${errorText}`, "error");
+          displayMessage(
+            `File upload failed: ${response.status} - ${errorText}`,
+            "error"
+          );
         }
       } catch (error) {
         displayMessage(`Error uploading file: ${error.message}`, "error");
@@ -35,16 +38,16 @@ function FileUploadForm({ uploadUrl }) {
     } else {
       displayMessage("No file selected for upload.", "warning");
     }
-    event.target.value = '';
+    event.target.value = "";
   };
 
   const displayMessage = (msg, type) => {
     setMessage(msg);
     setMessageType(type);
     setTimeout(() => {
-      setMessage('');
-      setMessageType('');
-    }, 2000); 
+      setMessage("");
+      setMessageType("");
+    }, 2000);
   };
 
   return (
@@ -63,11 +66,7 @@ function FileUploadForm({ uploadUrl }) {
         <i class="btn_space bi bi-cloud-arrow-up-fill"></i>
         Upload File
       </button>
-      {message && (
-        <div className={`alert alert-${messageType}`}>
-          {message}
-        </div>
-      )}
+      {message && <div className={`alert alert-${messageType}`}>{message}</div>}
     </>
   );
 }

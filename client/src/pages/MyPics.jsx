@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import fetchImages from "../service/imageService.jsx";
+import "../components/home/fileUpload/FileUploadForm.scss";
 
 function MyPics({ onDelete1 }) {
   const [images, setImages] = useState([]);
@@ -24,10 +25,10 @@ function MyPics({ onDelete1 }) {
     <div className="container">
       <h2 className="styleh2">My Pictures</h2>
       <div className="photos-fit">
-      {images.map((img, index) => (
-          <div key={index}>
+        {images.map((img, index) => (
+          <figure key={index}>
             <img src={img.url || img} alt="Uploaded content" />
-          </div>
+          </figure>
         ))}
       </div>
       {error && <p>{error}</p>}

@@ -10,16 +10,16 @@ import MyPics from "./pages/MyPics.jsx";
 import Contact from "./pages/Contact.jsx";
 import Collections from "./pages/Collections.jsx";
 import LoadingSpinner from "./components/spinner/LoadingSpinner.jsx";
-import CollectionFormModal from "./components/collections/FormModalHome.jsx"; 
-import ThemeManager from './components/themeManager/ThemeManager.jsx';
+import CollectionFormModal from "./components/collections/FormModalHome.jsx";
+import ThemeManager from "./components/themeManager/ThemeManager.jsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import "./App.css";
+import "./App.scss";
 
 const queryClient = new QueryClient();
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem('darkMode');
+    const savedMode = localStorage.getItem("darkMode");
     return savedMode ? JSON.parse(savedMode) : false;
   });
   const [searchQuery, setSearchQuery] = useState("");
@@ -29,10 +29,11 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [collections, setCollections] = useState([]);
   const [showCollectionModal, setShowCollectionModal] = useState(false);
-  const [selectedPhotoForCollection, setSelectedPhotoForCollection] = useState(null);
-  
+  const [selectedPhotoForCollection, setSelectedPhotoForCollection] =
+    useState(null);
+
   useEffect(() => {
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }, [darkMode]);
 
   function toggleTheme() {
@@ -49,10 +50,14 @@ function App() {
     }
     setIsLoading(false);
   };
-  
+
   const handleToggleFavorite = (photo) => {
-    const exists = favorites.some(f => f.id === photo.id);
-    setFavorites(exists ? favorites.filter(f => f.id !== photo.id) : [...favorites, photo]);
+    const exists = favorites.some((f) => f.id === photo.id);
+    setFavorites(
+      exists
+        ? favorites.filter((f) => f.id !== photo.id)
+        : [...favorites, photo]
+    );
   };
 
   const handleAddToCollection = (name) => {
@@ -60,9 +65,9 @@ function App() {
     const newCollection = {
       id: Date.now(),
       name,
-      photos: [selectedPhotoForCollection]
+      photos: [selectedPhotoForCollection],
     };
-    setCollections(colls => [...colls, newCollection]);
+    setCollections((colls) => [...colls, newCollection]);
     setShowCollectionModal(false);
   };
 
@@ -70,25 +75,31 @@ function App() {
     const newCollection = {
       id: Date.now(),
       name: name,
-      photos: [] 
+      photos: [],
     };
     setCollections([...collections, newCollection]);
   };
 
   const deleteFav = (photoId) => {
-    const newFavorites = favorites.filter(photo => photo.id !== photoId);
+    const newFavorites = favorites.filter((photo) => photo.id !== photoId);
     setFavorites(newFavorites);
   };
-  
+
   const deleteMyPics = (index) => {
-    setImages(currentImages => currentImages.filter((_, idx) => idx !== index));
+    setImages((currentImages) =>
+      currentImages.filter((_, idx) => idx !== index)
+    );
   };
-  
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <ThemeManager setDarkMode={setDarkMode} />
-        <div className={`text-center ${darkMode ? "bg-dark text-white" : "bg-light text-dark"}`}>
+        <div
+          className={`text-center ${
+            darkMode ? "bg-dark text-white" : "bg-light text-dark"
+          }`}
+        >
           <Header
             darkMode={darkMode}
             toggleTheme={toggleTheme}
@@ -97,15 +108,44 @@ function App() {
             handleSearch={handleSearch}
           />
           <Routes>
-            <Route path="/" element={<MainContent photos={photos} favorites={favorites} collections={collections} handleToggleFavorite={handleToggleFavorite} setCollections={setCollections} />} />
-            <Route path="/Favorites" element={<Favorites photos={favorites} onDelete={deleteFav} />} />
-            <Route path="/MyPics" element={<MyPics onDelete1={deleteMyPics} />} />
-            <Route path="/Collections" element={<Collections collections={collections} addCollection={addCollection} setCollections={setCollections}/>} />
-            <Route path="/Contact" element={<Contact />}/>
+            <Route
+              path="/"
+              element={
+                <MainContent
+                  photos={photos}
+                  favorites={favorites}
+                  collections={collections}
+                  handleToggleFavorite={handleToggleFavorite}
+                  setCollections={setCollections}
+                />
+              }
+            />
+            <Route
+              path="/Favorites"
+              element={<Favorites photos={favorites} onDelete={deleteFav} />}
+            />
+            <Route
+              path="/MyPics"
+              element={<MyPics onDelete1={deleteMyPics} />}
+            />
+            <Route
+              path="/Collections"
+              element={
+                <Collections
+                  collections={collections}
+                  addCollection={addCollection}
+                  setCollections={setCollections}
+                />
+              }
+            />
+            <Route path="/Contact" element={<Contact />} />
           </Routes>
           {isLoading && <LoadingSpinner />}
           {showCollectionModal && (
-            <CollectionFormModal addCollection={handleAddToCollection} closeModal={() => setShowCollectionModal(false)} />
+            <CollectionFormModal
+              addCollection={handleAddToCollection}
+              closeModal={() => setShowCollectionModal(false)}
+            />
           )}
           <Footer />
         </div>

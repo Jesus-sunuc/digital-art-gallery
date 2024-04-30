@@ -1,0 +1,248 @@
+/* .modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.modal-content {
+  background: var(--white_color);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  z-index: 1051;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--nth_child_color);
+  padding: 50px;
+  border-radius: 8px;
+  color: var(--white_color);
+}
+
+.modal-content form label {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.modal-content form select {
+  margin: 20px 0px;
+  border-radius: 5px;
+  background-color: var(--new_collection_button);
+  color: var(--white_color);
+  border: none;
+}
+
+.modal-content form option {
+  border-radius: 5px;
+  background-color: var(--new_collection_button);
+  color: var(--white_color);
+  border: none;
+}
+
+.modal-content form input,
+.modal-content form textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--grey_color);
+  border-radius: 4px;
+}
+
+.modal-content form .modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-content form .modal-button {
+  padding: 8px 16px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-button.submit {
+  background-color: var(--add_button);
+  color: var(--white_color);
+}
+
+.modal-button.cancel {
+  background-color: var(--delete_button);
+  color: var(--white_color);
+}
+
+.modal-button:hover {
+  opacity: 0.9;
+}
+
+.someSpace {
+  margin-right: 10px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+@media (max-width: 576px) {
+  .modal-content {
+    width: 95%;
+    padding: 10px;
+    max-width: none;
+  }
+
+  .modal-content form {
+    padding: 20px;
+  }
+
+  .modal-content form label {
+    font-size: 16px;
+  }
+
+  .modal-content form select,
+  .modal-content form input,
+  .modal-content form textarea {
+    margin: 10px 0px;
+  }
+
+  .modal-content form .modal-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal-content form .modal-button {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+} */
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+
+  .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    z-index: 1051;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--nth_child_color);
+      padding: 50px;
+      border-radius: 8px;
+      color: var(--white_color);
+
+      label {
+        margin-bottom: 5px;
+        font-size: 18px;
+      }
+
+      select,
+      option {
+        margin: 20px 0;
+        border-radius: 5px;
+        background-color: var(--new_collection_button);
+        color: var(--white_color);
+        border: none;
+      }
+
+      input,
+      textarea {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid var(--grey_color);
+        border-radius: 4px;
+      }
+
+      .modal-buttons {
+        display: flex;
+        justify-content: flex-end;
+
+        .modal-button {
+          padding: 8px 16px;
+          margin-left: 10px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+
+          &.submit {
+            background-color: var(--add_button);
+            color: var(--white_color);
+          }
+
+          &.cancel {
+            background-color: var(--delete_button);
+            color: var(--white_color);
+          }
+
+          &:hover {
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+  }
+}
+
+.someSpace {
+  margin-right: 10px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+@media (max-width: 576px) {
+  .modal-content {
+    width: 95%;
+    padding: 10px;
+    max-width: none;
+
+    form {
+      padding: 20px;
+
+      label {
+        font-size: 16px;
+      }
+
+      select,
+      input,
+      textarea {
+        margin: 10px 0;
+      }
+
+      .modal-buttons {
+        flex-direction: column;
+        align-items: stretch;
+
+        .modal-button {
+          width: 100%;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/contact/contact.css";
+import "../components/contact/contact.scss";
 
 function Contact() {
   const handleSubmit = (event) => {

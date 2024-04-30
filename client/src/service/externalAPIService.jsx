@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
-const UNSPLASH_ACCESS_KEY = 'HEtY5s-u0VohbhWNXZ5qHAZEqaTdbPWSgF8sRM7lWXg';
-const baseUrl = 'https://api.unsplash.com';
+const UNSPLASH_ACCESS_KEY = "HEtY5s-u0VohbhWNXZ5qHAZEqaTdbPWSgF8sRM7lWXg";
+const baseUrl = "https://api.unsplash.com";
 
 const unsplashService = {
   searchPhotos: async (query, page = 1) => {
@@ -10,13 +10,13 @@ const unsplashService = {
         params: {
           query: query,
           page: page,
-          per_page: 10,  // Number of items per page
+          per_page: 10,
           client_id: UNSPLASH_ACCESS_KEY,
         },
       });
       return response.data.results;
     } catch (error) {
-      console.error('Error fetching photos from Unsplash:', error);
+      console.error("Error fetching photos from Unsplash:", error);
       return [];
     }
   },
