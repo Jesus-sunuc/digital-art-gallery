@@ -17,20 +17,12 @@ function Header({
   return (
     <header>
       <div className="container">
-        <button className="menu-toggle" onClick={toggleMenu}>
-          ☰
-        </button>
-        <div
-          className="overlay"
-          onClick={() => setMenuOpen(false)}
-          style={{ display: isMenuOpen ? "block" : "none" }}
-        ></div>
+        <button className="menu-toggle" onClick={toggleMenu}>☰</button>
+        <div className="overlay" onClick={() => setMenuOpen(false)} style={{ display: isMenuOpen ? "block" : "none" }}></div>
         <section id="first_half_header">
           <div className="row justify-content-between align-items-center mb-3">
             <div className="col-12 col-md-3 text-md-start">
-              <Link to="/" className="logo">
-                DA
-              </Link>
+              <Link to="/" className="logo">DA</Link>
             </div>
             {location.pathname === "/" && (
               <div className="col-12 col-md-6">

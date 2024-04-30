@@ -83,6 +83,9 @@ header {
   color: var(--white_color);
 }
 
+/* ===================== HEADER ===================== */
+
+
 #fileUpload {
   display: none;
 }
@@ -199,14 +202,15 @@ header {
       a {
         display: block;
         width: 100%;
-        padding: 12px;
+        padding: 10px;
         text-align: left;
         border-bottom: 1px solid var(--grey_color);
 
         &:hover,
         &.selected {
           background-color: var(--hover_header);
-          color: var(--white_color);
+          color: var(--black_color);
+          border-radius: 5px;
         }
       }
     }
@@ -338,7 +342,7 @@ button {
 
 @media (max-width: 576px) {
   .homeh2 {
-    left: 35%;
+    left: 30%;
   }
 }
 

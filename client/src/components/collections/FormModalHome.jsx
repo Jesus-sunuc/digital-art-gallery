@@ -55,12 +55,10 @@ function CollectionFormModal({
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <form onSubmit={handleSubmit}>
-          <h3>
-            {isNewCollection
+          <h3>{isNewCollection
               ? "Add New Collection"
               : "Add to Existing Collection"}
           </h3>
-
           <div>
             <label className="someSpace">
               <input

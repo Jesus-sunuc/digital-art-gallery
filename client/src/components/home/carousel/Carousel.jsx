@@ -30,8 +30,7 @@ function PhotoCarousel() {
     <div
       className="photo-carousel"
       onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
+      onMouseLeave={() => setIsHovering(false)}>
       <button className="prev" onClick={prevPhoto}>
         <i className="bi bi-caret-left"></i>
       </button>

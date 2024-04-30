@@ -11,7 +11,6 @@ import Contact from "./pages/Contact.jsx";
 import Collections from "./pages/Collections.jsx";
 import LoadingSpinner from "./components/spinner/LoadingSpinner.jsx";
 import CollectionFormModal from "./components/collections/FormModalHome.jsx";
-import ThemeManager from "./components/themeManager/ThemeManager.jsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.scss";
 
@@ -94,7 +93,6 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <ThemeManager setDarkMode={setDarkMode} />
         <div
           className={`text-center ${
             darkMode ? "bg-dark text-white" : "bg-light text-dark"
